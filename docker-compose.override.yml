@@ -1,0 +1,22 @@
+﻿services:
+  identityserver.host:
+    ports:
+      - "5101:5101"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://0.0.0.0:5101
+      - ASPNETCORE_Kestrel__Certificates__Default__KeyPath=/https/${SSL_CERT_KEY}
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/${SSL_CERT}
+    volumes:
+      - "./certificates:/https:ro"
+
+  bff.sample:
+    ports:
+      - "5102:5102"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://0.0.0.0:5102
+      - ASPNETCORE_Kestrel__Certificates__Default__KeyPath=/https/${SSL_CERT_KEY}
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/${SSL_CERT}
+    volumes:
+      - "./certificates:/https:ro"

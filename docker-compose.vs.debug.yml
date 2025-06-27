@@ -1,0 +1,10 @@
+﻿# This file overrides some settings when debugging using Docker Compose in Visual Studio
+
+services:
+  identityserver.host:
+    build:
+      target: base
+
+  bff.sample:
+    build:
+      target: base
