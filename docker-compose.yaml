@@ -4,10 +4,6 @@
     build:
       context: .
       dockerfile: IdentityServer.Host/Dockerfile
-    ports:
-      - "5001:8081"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
     networks:
       acme:
         aliases:
@@ -17,10 +13,6 @@
     build:
       context: .
       dockerfile: Bff.Sample/Dockerfile
-    ports:
-      - "5002:8081"
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
     depends_on:
       - identityserver.host
     networks:
